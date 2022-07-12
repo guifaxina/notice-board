@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function render() {
-  fetch("http://192.168.1.2:3000/api/all")
+  fetch("http://localhost:3000/api/all")
     .then((res) => {
       return res.json();
     })
@@ -40,13 +40,13 @@ function newPost() {
     description,
   };
 
-  const options = {
+  const options = { 
     method: "POST",
     headers: new Headers({ "content-type": "application/json" }),
     body: JSON.stringify(post)
   };
 
-  fetch("http://192.168.1.2:3000/api/new", options).then(res=>{
+  fetch("http://localhost:3000/api/new", options).then(res=>{
     render();
     document.getElementById("title").value = "";
     document.getElementById("description").value = "";
