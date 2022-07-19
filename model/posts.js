@@ -9,6 +9,12 @@ module.exports = {
   newPost(title, description) {
     this.posts.push({ id: idGen(), title, description });
   },
+  deletePost(id) {
+    const index = this.posts.findIndex(obj => {
+      return obj.id == id
+    })
+    this.posts.splice(index, 1)
+  }
 };
 
 function idGen() {

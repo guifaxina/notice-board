@@ -18,7 +18,9 @@ function render() {
             <div class="card-header">
               <h5 class="card-title">${elem.title}</h5>
             </div>
-            
+            <div>
+              <button onclick="deletePost(${elem.id})">X<button>
+            </div>
             <div class="card-body">
               <div class="card-text">${elem.description}</div>
             </div>
@@ -51,4 +53,20 @@ function newPost() {
     document.getElementById("title").value = "";
     document.getElementById("description").value = "";
   });
+}
+
+function deletePost(postId){
+  let cardId = postId.id
+  let post = {
+    title,
+    id: cardId
+  }
+  const options = {
+    method: "DELETE",
+    headers: new Headers({ "content-type": "application/json" }),
+    body: JSON.stringify(post)
+  }
+  fetch("http://localhost:3000/api/delete", options).then(res=>{
+    render();
+  })
 }
