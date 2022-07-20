@@ -21,6 +21,9 @@ function render() {
             <div>
               <button onclick="deletePost(${elem.id})">X<button>
             </div>
+            <div>
+              <button onclick="editPost(${elem.id})">EDIT<button>
+            </div>
             <div class="card-body">
               <div class="card-text">${elem.description}</div>
             </div>
@@ -58,7 +61,6 @@ function newPost() {
 function deletePost(postId){
   let cardId = postId.id
   let post = {
-    title,
     id: cardId
   }
   const options = {
@@ -67,6 +69,26 @@ function deletePost(postId){
     body: JSON.stringify(post)
   }
   fetch("http://localhost:3000/api/delete", options).then(res=>{
+    render();
+  })
+}
+
+function editPost(postId){
+  let newTitle = window.prompt("Novo título")
+  let cardId = postId.id
+  
+  let changes = {
+    title: newTitle,
+    description,
+    id: cardId
+  }
+  
+  const options = {
+    method: "PATCH",
+    headers: new Headers({ "content-type": "application/json" }),
+    body: JSON.stringify(changes)
+  }
+  fetch("http://localhost:3000/api/patch", options).then(res=>{
     render();
   })
 }

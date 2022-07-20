@@ -19,7 +19,13 @@ router.delete("/delete", bodyParser.json(), (req, res) => {
   let id = req.body.id
   posts.deletePost(id)
   res.send("Post deletado")
-  console.log(id)
+});
+
+router.patch("/patch", bodyParser.json(), (req, res) => {
+  let id = req.body.id
+  let title = req.body.title
+  posts.editPost(title, id)
+  res.send("Post alterado")
 });
 
 module.exports = router;

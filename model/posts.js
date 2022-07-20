@@ -14,6 +14,13 @@ module.exports = {
       return obj.id == id
     })
     this.posts.splice(index, 1)
+  },
+  editPost(title, id){
+    const index = this.posts.findIndex(obj => {
+      return obj.id == id
+    })
+    this.posts[index].title = title
+    // this.posts[index].description = description
   }
 };
 
