@@ -17,13 +17,12 @@ function render() {
             
             <div class="card-header">
               <h5 class="card-title">${elem.title}</h5>
+              <div>
+              <button onclick="deletePost(${elem.id})" class="btn btn-danger">X</button>
+              <button onclick="editPost(${elem.id})" class="btn btn-primary">EDIT</button>
+              </div>
             </div>
-            <div>
-              <button onclick="deletePost(${elem.id})">X<button>
-            </div>
-            <div>
-              <button onclick="editPost(${elem.id})">EDIT<button>
-            </div>
+   
             <div class="card-body">
               <div class="card-text">${elem.description}</div>
             </div>

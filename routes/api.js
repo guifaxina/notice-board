@@ -16,18 +16,16 @@ router.post("/new", bodyParser.json(), (req, res) => {
 });
 
 router.delete("/delete", bodyParser.json(), (req, res) => {
-  let id = req.body.id
-  posts.deletePost(id)
-  res.send("Post deletado")
+  let id = req.body.id;
+  posts.deletePost(id);
+  res.send("Post deletado");
 });
 
 router.patch("/patch", bodyParser.json(), (req, res) => {
-  let id = req.body.id
-  let title = req.body.title
-  posts.editPost(title, id)
-  res.send("Post alterado")
+  let id = req.body.id;
+  let title = req.body.title;
+  posts.editPost(title, id);
+  res.send("Post alterado");
 });
 
 module.exports = router;
-
-
